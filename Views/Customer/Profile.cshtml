@@ -79,80 +79,10 @@
         input {
             margin-top: 20px;
         }
-        img {
-            width: 220px;
-            height: 220px;
-        }
-        .modalDialog {
-            position: fixed;
-            font-family: Arial, Helvetica, sans-serif;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: black;
-            z-index: 99999;
-            opacity: 0;
-            -webkit-transition: opacity 400ms ease-in;
-            -moz-transition: opacity 400ms ease-in;
-            transition: opacity 400ms ease-in;
-            pointer-events: none;
-        }
-
-            .modalDialog:target {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .modalDialog > div {
-                width: 600px;
-                height: 450px;
-                position: relative;
-                margin: 7% auto;
-                padding: 5px 20px 13px 20px;
-                border-radius: 10px;
-                background: black;
-                background-color: black;
-                background: -moz-linear-gradient(#383838, #999);
-                background: -webkit-linear-gradient(#383838, #999);
-                background: -o-linear-gradient(#383838, #999);
-            }
-
-        .close {
-            background: black;
-            color: black;
-            line-height: 25px;
-            position: absolute;
-            right: -12px;
-            text-align: center;
-            top: -10px;
-            width: 24px;
-            text-decoration: none;
-            font-weight: bold;
-            -webkit-border-radius: 12px;
-            -moz-border-radius: 12px;
-            border-radius: 12px;
-            -moz-box-shadow: 1px 1px 3px #000;
-            -webkit-box-shadow: 1px 1px 3px #000;
-            box-shadow: 1px 1px 3px #000;
-        }
-
-            .close:hover {
-                background: black;
-            }
-
+      
 
     </style>
-    <script>
-        function showDialog(x) {
-            var r = confirm("Are you sure you want to delete?");
-            if (r == true)
-                window.location.assign("/Customer/Del?id=" + x);
-            else
-                ;
-        }
-		
-		
+    <script>	
                     function showDialog() {
                         
                         alert("Successfully Updated");
@@ -185,17 +115,39 @@
    
     <div class="container second">
       
-        <form  action="EditCustomerProfile" style="margin-top:30px">
-            <label>UserName:</label>  &nbsp;&nbsp;&nbsp;  &nbsp; <input type="text" name="Name" readonly value="@c.Name" /><br />
-            <label>Email:</label> &nbsp;&nbsp;&nbsp;  &nbsp; <input type="email" style="margin-left:5%;" name="Email" readonly value="@c.Email" /><br />
-            <label>Password:</label> &nbsp;&nbsp;&nbsp;  &nbsp; <input type="text" style="margin-left:5%;" name="Password" readonly value="@c.Password" /><br />
+        <h3 style="text-align:center;">Edit Personal Information</h3>
+
+        @using (Html.BeginForm("EditCustomerProfile", "Customer", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => x.Id);
+            @Html.LabelFor(m => x.Name);
+            @Html.EditorFor(m => x.Name);
+            <br /><br />
+            @Html.LabelFor(m => x.Email);
+            @Html.EditorFor(m => x.Email);
+
+            <br /><br />
+            @Html.LabelFor(m => x.Password);
+            @Html.EditorFor(m => x.Password);
+
+            <br /><br />
+            @Html.ActionLink("edit", "editcustomerdetails",m, new { @class = "btn btn-sucess" })@*<button onclick="showDialog()" class="btn" type="submit" value="Edit">Edit</button>*@
+        }
+
+
+
+
+        @*<form  action="EditCustomerProfile" style="margin-top:30px">
+            <label>UserName:</label>  &nbsp;&nbsp;&nbsp;  &nbsp; <input type="text" name="Name" readonly value="@x.Name" /><br />
+            <label>Email:</label> &nbsp;&nbsp;&nbsp;  &nbsp; <input type="email" style="margin-left:5%;" name="Email" readonly value="@x.Email" /><br />
+            <label>Password:</label> &nbsp;&nbsp;&nbsp;  &nbsp; <input type="text" style="margin-left:5%;" name="Password" readonly value="@x.Password" /><br />
             <a href="#openModal" style="text-align:center;font-size:20px">Edit</a>
            
                               
-        </form>
+        </form>*@
 
 
-       </div>
+       @*</div>
         <div id="openModal" class="modalDialog">
         <div>
             <a href="#close" title="Close" class="close">X</a>
@@ -203,7 +155,7 @@
          
 @using (Html.BeginForm("EditCustomerProfile","Customer",FormMethod.Post))
 { 
-            @Html.HiddenFor(m => x.Id);
+            @Html.HiddenFor(m=> x.Id);
                 @Html.LabelFor(m => x.Name);
                 @Html.EditorFor(m => x.Name);
                 <br /><br /> 
@@ -215,9 +167,9 @@
                    @Html.EditorFor(m => x.Password);
                   
                     <br /><br />
-                     @Html.ActionLink("edit", "editcustomerdetails", new {@class ="btn btn-sucess"})<button onclick="showDialog()" class="btn" type="submit" value="Edit">Edit</button>
+                     @Html.ActionLink("edit", "editcustomerdetails", new { @class = "btn btn-sucess" })<button onclick="showDialog()" class="btn" type="submit" value="Edit">Edit</button>
                     }
-                </div>
+                </div>*@
               
 
                
@@ -238,6 +190,7 @@
                         <th>HotelId </th>
                         <th>CheckIn-Date</th>
                         <th>CheckOut-Date</th>
+                      
 
                     </tr>
                 </thead>

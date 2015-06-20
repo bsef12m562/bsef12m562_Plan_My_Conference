@@ -8,6 +8,7 @@
 @model List<Booking>
 
 
+
 @{ Customer c = (Customer)HttpContext.Current.Session["user"];}
 <html>
 <head>
@@ -184,10 +185,12 @@
                 </div>*@
 
                 @*<div class="container first">*@
+              
+                  
                     @using (Html.BeginForm("EditCustomerProfile", "Customer", FormMethod.Post))
                     {
                          
-                        @Html.HiddenFor(m => c.Id);
+                        @Html.HiddenFor(m =>c.Id);
                         @Html.LabelFor(m => c.Name);
                         <br />
                         
@@ -204,7 +207,7 @@
                         @Html.EditorFor(m => c.Password);
                     
                         <br /><br />
-                        @Html.ActionLink("Edit", "EditCustomerProfile",new {}, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Edit", "EditCustomerProfile",c, new { @class = "btn btn-success" })
                         
                     }
                 @*</div>*@
