@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/layoutbooking.cshtml";
+    
+}
+@using Conference.Models
+
+
+@{ Customer c = (Customer)HttpContext.Current.Session["user"];}
+
+<html>
+<head>
+    <title>Booking</title>
+
+    <style>
+        .h1{
+            text-align:center;
+        }
+
+        /*.well {
+           
+            height:90%;
+            width:60%;
+        }*/
+
+        label
+        {
+            color:yellow;
+        }
+
+        /*.form-horizontal
+        {
+            height:150px;
+        }*/
+
+        h2
+        {
+            color:yellow;
+            font-family:'Comic Sans MS';
+        }
+   </style>
+    @*<script>
+        $(document).ready(function () {
+            $("#s1date").datepicker({
+                numberOfMonths: 1,
+               
+                onSelect: function (selected) {
+                    $("#e1date").datepicker("option", "minDate", selected)
+                }
+            });
+            $("#e1date").datepicker({
+                numberOfMonths: 1,
+                onSelect: function (selected) {
+                    $("#s1date").datepicker("option", "maxDate", selected)
+                }
+            });
+        });
+
+    </script>*@
+    <script src="js/google-code-prettify/prettify.js"></script>
+   
+  
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+   
+</head>
+<body>
+
+    @if( c !=  null)
+    {<h2>Welcome @c.Name
+         @c.Id
+    
+    </h2>
+        
+        
+    }
+    
+    @if(@ViewBag.Done != null){ <script type="text/javascript">
+            alert('Your Conference is booked.Thankyou for booking');
+        </script>}
+        <h2 >BOOKING</h2>
+    
+   
+    <hr />
+    <div class="container well-lg" >
+        <form action="abvc" role="form" id="book">
+        <label>
+            Location
+        </label>
+
+            <select name="Location" style="margin-left:12%; ">
+                @{
+                    RecordsEntities er = new RecordsEntities();
+                var y = er.Locations.ToList();
+                foreach (var p in y)
+                {
+                    <option>@p.Name</option>
+                }
+
+
+
+                }
+
+            </select>
+            <br />
+            <label>
+             Number of Guests
+            </label>
+           <input  style="margin-left:6.25%;" min="1"   type="number" name="Capacity" width:"10%" required />
+            <br /><br />
+
+
+            <label>Budget(in Ruppees)</label>
+            <input type="number" name="Budget" style="margin-left:5%;" min="1" required /><br /><br />
+
+            <label>Starting Date</label>
+            <input type="date" name="StartingAvailableDate" id="s1date" style="margin-left:9.45%;" required /><br /><br />
+
+            <label>Ending Date</label>
+            <input type="date" name="EndingAvailableDate"  id="e1date" style="margin-left:9.95%;"   required /><br /><br />
+
+            <label>Type</label>
+            <select style="margin-left:14.5%;" name="Type">
+                @{RecordsEntities re = new RecordsEntities();
+                var x = re.TypesOfRooms.ToList();
+                foreach (var w in x)
+                { 
+                    <option>@w.RoomType</option>
+                }
+
+
+
+                }
+           </select>
+            <br />
+
+            <label>Additional Featrures</label>
+            <input style="margin-left:5%;" type="checkbox" name="Wifi" value="Wifi" /> <label>Wifi</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="AirportShuttle" value="AirportShuttle" /><label>Airport Shuttle</label>
+            <input type="checkbox" name="CityTour" value="CityTour" /><label>City Tour</label>
+            <br />
+            <br />
+            <input type="submit" value="search" />
+
+
+            
+
+            
+        </form>
+    </div> 
+
+
+
+
+    
+
+</body>
+</html>

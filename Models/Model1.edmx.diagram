@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ea37f2e058549f7b340eb6c921b475a" Name="Diagram1">
+        <EntityTypeShape EntityType="RecordsModel.Abstract" PointX="4.75" PointY="4.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Admin" PointX="5.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Booking" PointX="3" PointY="1" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Category" PointX="6.75" PointY="3.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Customer" PointX="0.75" PointY="1.25" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Deal" PointX="6.75" PointY="6.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Feedback" PointX="7.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Hotel" PointX="0.75" PointY="6.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.Location" PointX="2.75" PointY="4.75" Width="1.5" />
+        <EntityTypeShape EntityType="RecordsModel.TypesOfRoom" PointX="2.75" PointY="7.75" Width="1.5" />
+        <AssociationConnector Association="RecordsModel.FK_Booking_ToTable" />
+        <AssociationConnector Association="RecordsModel.FK_Booking_ToTable_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

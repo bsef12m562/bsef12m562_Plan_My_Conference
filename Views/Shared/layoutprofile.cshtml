@@ -1,0 +1,121 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="bootstrap.css" rel="stylesheet" />
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+        .navbar {
+            width: 100%;
+            height: 130px;
+            background-color: black;
+            display: inline-block;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            opacity: 0.9;
+            margin-bottom: 0px;
+        }
+
+        body {
+            width: 100%;
+            position: relative;
+            top: 0px;
+            height: 100%;
+            background-image: url(../Images/two.jpg);
+            background-color: rgb(0, 0, 0);
+            background-size: cover;
+            /*background-position: 50% 0%;*/
+            background-repeat: repeat-y;
+        }
+
+        a:active {
+            color: #ff6a00;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:hover {
+            color: yellow;
+        }
+
+
+
+        .well {
+            margin-top: 10px;
+            width: 80%;
+            height: 650px;
+            background-color: black;
+            opacity: 0.9;
+            overflow-y:scroll;
+        }
+
+        #footer {
+            background-color: black;
+        }
+
+        .footer {
+            background-color: #383838;
+            width: 100%;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            /*display: inline-block;*/
+            margin-top: 20px;
+            height: 8%;
+            position: static;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <h3 style="color: whitesmoke; font-style: normal; align-content: center; margin-top: 50px; font-family: Comic Sans MS, cursive, sans-serif; font-style:oblique;"> PlanMyConference</h3>
+                    </a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav pull-right">
+                        <li> <a href="~/Customer/Booking"> <h3 style="color: whitesmoke; font-style: normal; align-content: center; margin-top: 50px">Booking</h3> </a> </li>
+
+                        <li> <a href="~/Customer/Profile"> <h3 style="color: whitesmoke; font-style: normal; align-content: center; margin-top: 50px">Profile</h3> </a> </li>
+                        <li> <a href="~/Customer/Abstracts"> <h3 style="color: whitesmoke; font-style: normal; align-content: center; margin-top: 50px">Abstract</h3> </a> </li>
+                        <li> <a href="~/Customer/Logout"> <h3 style="color: whitesmoke; font-style: normal; align-content: center; margin-top: 50px">Logout</h3> </a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    @* div *@
+
+    <div class="container well well-lg">
+        @RenderBody();
+    </div>
+
+    @* footer *@
+
+
+    @*<div class="container footer well-sm">
+           <h4 style="float:left;color:whitesmoke;float:left;"> @@copyrights planMyConference 2015</h4>
+           <img src="~/Images/brandsone.jpg" style="background-color:transparent;margin-bottom:2%; float:right;" />
+
+        </div>*@
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿@model Conference.Models.Deal
+
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/layoutpreview.cshtml";
+}
+<html>
+<head>
+    <title>Preview</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #first {
+            float: left;
+            width: 40%;
+            height: 100%;
+            background-color: blue;
+        }
+
+        #second {
+            float: right;
+            width: 60%;
+            height: 100%;
+            background-color: aquamarine;
+        }
+
+
+        .first {
+            float: left;
+            width: 40%;
+            height: 100%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .second {
+            float: right;
+            width: 60%;
+            height: 100%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        img {
+            margin-top: 10%;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+
+        h3 {
+            font-family: Comic Sans MS, cursive, sans-serif;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid box">
+        <div class="container first well-sm">
+
+            <br />
+            
+            <img src="~/Filesone/b1.jpg" style="max-height:100%; max-width:100%;opacity:1;" />
+            @*   <img src="~/Filesone/@Model.PictureName.jpg" style="max-height:100%; max-width:100%;opacity:1;" /> *@
+
+            <br /><br>
+
+        </div>
+
+        <div class="container second well-sm">
+
+            <h3>@Model.HotelName</h3>
+            <p style="color:white; margin-top:37px;">
+
+                Small team. Big moments. A lifetime of happiness. We aren't your average planners. People hire us because they want a wedding or marriage proposal that is extraordinary. Our clients are intensely busy professionals that depend on us to make their planning process stress-free and to discover what will make their day uniquely special. We make design and planning simple for our clients - and simple isn't easy.
+
+                Born at the intersection of clever and creative, Brilliant Event Planning harnesses the power of emotion to make your most important day less stressful and more beautiful. At our core, we are a culture of action and imagination.
+
+                Do you want your wedding or marriage proposal to be different? Be Brilliant.
+
+            </p>
+            @Html.ActionLink("BookIt", "bookhotel", new { id = @Model.Id, sdate = @ViewBag.scustdate, edate = @ViewBag.ecustdate }, new { @class = "btn btn-success" })
+            @*@Html.ActionLink("Back", "SearchForBooking",new{Location = @Model.Location, Capacity = @Model.Capacity,Budget = @Model.Capacity, StartingAvailableDate = @Model.StartingAvailableDate, EndingAvailableDate = @Model.EndingAvailableDate, Type = @Model.Type, Wifi = @Model.Wifi, AirportShuttle = @Model.AirportShuttle, CityTour = @Model.CityTour}, new { @class = "btn btn-success" })*@
+
+            @*  <img src="~/Images/brandsone.jpg" style="background-color:transparent; float:right;" /> *@
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+
+
+
+</html>

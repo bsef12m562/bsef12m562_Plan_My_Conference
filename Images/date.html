@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<!-- saved from url=(0112)http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>c# 4.0 - Equivalent of SQL Between Statement Using Linq or a Lambda expression - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Equivalent of SQL Between Statement Using Linq or a Lambda expression">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Don&#39;t think this is a repost, difficult to search for the word between because it is used in everything (like searching for AND).
+
+I want to filter a list based on a date range.
+
+I have a list with...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression">
+    <link rel="canonical" href="./date_files/date.html">
+
+    
+    
+    <script type="text/javascript" async="" src="./date_files/ados"></script><script async="" src="./date_files/quant.js"></script><script async="" src="./date_files/beacon.js"></script><script async="" src="./date_files/analytics.js"></script><script type="text/javascript" async="" src="./date_files/ados.js"></script><script src="./date_files/jquery.min.js"></script>
+    <script src="./date_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./date_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Equivalent of SQL Between Statement Using Linq or a Lambda expression&#39;" href="http://stackoverflow.com/feeds/question/4087311">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:4087311});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '4087311');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1433480651,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"30310699b829c37fa8cb1965031e46c5","isAnonymous":true,"ab":{"sticky_vote_controls":{"v":"b","g":1}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"19d16cb5d8df","js/moderator.en.js":"f24fa3b69819","js/full-anon.en.js":"1561914c896e","js/full.en.js":"a64fe2d37bce","js/wmd.en.js":"077e78e858a1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"6c97a4d60cdb","js/help.en.js":"f00091de0a13","js/tageditor.en.js":"99dc590a8ca1","js/tageditornew.en.js":"5a4806d8b64d","js/inline-tag-editing.en.js":"48f13b102998","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"51907c749d4a","js/tagsuggestions.en.js":"b278f9a0b23b","js/post-validation.en.js":"d48bec357c5b","js/explore-qlist.en.js":"fd55f9ed0bb7","js/events.en.js":"5484c21447f3","js/keyboard-shortcuts.en.js":"102322c755f0","js/external-editor.en.js":"2fd4de15fb85","js/external-editor.en.js":"2fd4de15fb85","js/snippet-javascript.en.js":"49fc6920793f","js/snippet-javascript-codemirror.en.js":"8ee52063e9d7"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script async="" src="./date_files/full-anon.en.js"></script><script type="text/javascript" src="./date_files/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"><script async="" src="./date_files/snippet-javascript.en.js"></script><script async="" src="./date_files/post-validation.en.js"></script><script async="" src="./date_files/prettify-full.en.js"></script><script async="" src="./date_files/external-editor.en.js"></script><link type="text/css" rel="stylesheet" href="./date_files/jobs.min.css"></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 144 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression" class="login-link">log in</a>
+
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                            <a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://stackoverflow.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">×</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="./date_files/date.html" class="question-hyperlink">Equivalent of SQL Between Statement Using Linq or a Lambda expression</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="4087311" id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk552219287",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk552219287"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6NjYyNzk2LCJkaSI6IjZjMmZiNmQ1NmI3YjRlNjE5MDg5MzU0OWZiMDY2NTIxIiwiZG0iOjEsImZjIjo2ODQ1MjIsImZsIjo0MTAxODMsImlwIjoiMTA0LjIzNi4xNi41NSIsImt3IjoibGlucSxjIy00LjAsbGFtYmRhIiwibnciOjIyLCJwYyI6MCwicHIiOjE1NjgsInJ0IjoxLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vIiwic3QiOjgyNzcsInVrIjoidWUxLWJlMzZlMGM4OTYyZDQ0ZTdhYTEyNGI5YzE2Yzc2MjA1Iiwiem4iOjQzLCJ0cyI6MTQzMzQ4MDY1MzYwNywiYmYiOnRydWUsInBuIjoiYWR6ZXJrNTUyMjE5Mjg3IiwidXIiOiJodHRwOi8vY2FyZWVycy5zdGFja292ZXJmbG93LmNvbS9wcm9kdWN0cz91dG1fc291cmNlPXN0YWNrb3ZlcmZsb3cuY29tJnV0bV9tZWRpdW09YWQmdXRtX2NhbXBhaWduPWVtcGxveWVycy1zdXBlcmhlcm9lcyZ1dG1fY29udGVudD1sYi1zdXBlcmhlcm9lcyJ9&s=X4VNAdBlSzbl_jt3Pw1EcE3sbtk" rel="nofollow" target="_blank" title=""><img src="./date_files/7b03b9d327834757b98b657002b37789.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./date_files/i.gif"></div>    <table class="">
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="4087311">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>4</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>Don't think this is a repost, difficult to search for the word between because it is used in everything (like searching for AND).</p>
+
+<p>I want to filter a list based on a date range.</p>
+
+<p>I have a list with some dates and I want to filter them by a date range.  Is there a Linq or Lambda equivalent of the <code>between</code> statement in SQL.</p>
+
+<p>For example, the code below will not work in Linqpad (or Visual Studio):</p>
+
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="kwd">void</span><span class="pln"> </span><span class="typ">Main</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">ListExample</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">list</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">ListExample</span><span class="pun">&gt;();</span><span class="pln">
+
+    </span><span class="typ">list</span><span class="pun">.</span><span class="typ">Add</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ListExample</span><span class="pun">(</span><span class="str">"Name1"</span><span class="pun">,</span><span class="str">"23 Aug 2010"</span><span class="pun">));</span><span class="pln">
+    </span><span class="typ">list</span><span class="pun">.</span><span class="typ">Add</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ListExample</span><span class="pun">(</span><span class="str">"Name2"</span><span class="pun">,</span><span class="str">"23 Aug 2009"</span><span class="pun">));</span><span class="pln">
+
+    </span><span class="kwd">var</span><span class="pln"> query </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> l </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">list</span><span class="pln">
+        </span><span class="kwd">where</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> between </span><span class="str">"01 Jan 2010"</span><span class="pln"> and </span><span class="str">"01 Jan 2011"</span><span class="pln">
+        </span><span class="kwd">select</span><span class="pln"> l</span><span class="pun">;</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ListExample</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">ListExample</span><span class="pun">(</span><span class="kwd">string</span><span class="pln"> name</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> dateValue</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+        </span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="typ">Parse</span><span class="pun">(</span><span class="pln">dateValue</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> </span><span class="typ">Name</span><span class="pun">{</span><span class="pln">get</span><span class="pun">;</span><span class="typ">set</span><span class="pun">;}</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pln"> </span><span class="typ">DateValue</span><span class="pun">{</span><span class="pln">get</span><span class="pun">;</span><span class="typ">set</span><span class="pun">;}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/linq" class="post-tag js-gps-track" title="show questions tagged &#39;linq&#39;" rel="tag">linq</a> <a href="http://stackoverflow.com/questions/tagged/c%23-4.0" class="post-tag js-gps-track" title="show questions tagged &#39;c#-4.0&#39;" rel="tag">c#-4.0</a> <a href="http://stackoverflow.com/questions/tagged/lambda" class="post-tag js-gps-track" title="show questions tagged &#39;lambda&#39;" rel="tag">lambda</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/4087311" title="short permalink to this question" class="short-link" id="link-post-4087311">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4087311/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/4087311/revisions" title="show all edits to this post">edited <span title="2011-07-04 07:35:49Z" class="relativetime">Jul 4 '11 at 7:35</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/256431/mark-hurd"><div class="gravatar-wrapper-32"><img src="./date_files/649d0c30b87efd8094abfcb4624b431e" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/256431/mark-hurd">Mark Hurd</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,595</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="29 silver badges"><span class="badge2"></span><span class="badgecount">29</span></span><span title="58 bronze badges"><span class="badge3"></span><span class="badgecount">58</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2010-11-03 13:07:28Z" class="relativetime">Nov 3 '10 at 13:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/107127/simon"><div class="gravatar-wrapper-32"><img src="./date_files/947f8d1a2af46efa6ac13baacebd4267" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/107127/simon">Simon</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">101</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4087311" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-4396119" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">looks like a duplicate of: <a href="http://stackoverflow.com/questions/1447635/linq-between-operator">stackoverflow.com/questions/1447635/linq-between-operator</a></span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/80869/piotr-czapla" title="9589 reputation" class="comment-user">Piotr Czapla</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4396119_4087311"><span title="2010-11-03 13:47:14Z" class="relativetime-clean">Nov 3 '10 at 13:47</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4087311" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="4087339"></a>
+<div id="answer-4087339" class="answer accepted-answer" data-answerid="4087339" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="4087339">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Something like this?</p>
+
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="kwd">var</span><span class="pln"> query </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> l </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">list</span><span class="pln">
+            </span><span class="kwd">where</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">2010</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln"> 
+               </span><span class="pun">&amp;&amp;</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">2011</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+            </span><span class="kwd">select</span><span class="pln"> l</span><span class="pun">;</span></code></pre>
+
+<p>You can write your own extension method:</p>
+
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> bool </span><span class="typ">IsBetween</span><span class="pun">(</span><span class="kwd">this</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pln"> dt</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pln"> start</span><span class="pun">,</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pln"> end</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> dt </span><span class="pun">&gt;=</span><span class="pln"> start </span><span class="pun">&amp;&amp;</span><span class="pln"> dt </span><span class="pun">&lt;=</span><span class="pln"> end</span><span class="pun">;</span><span class="pln">    
+</span><span class="pun">}</span></code></pre>
+
+<p>In which case the query would look something like (method syntax for a change):</p>
+
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="kwd">var</span><span class="pln"> start </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">2010</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> end </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">2011</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> query </span><span class="pun">=</span><span class="pln"> </span><span class="typ">list</span><span class="pun">.</span><span class="typ">Where</span><span class="pun">(</span><span class="pln">l </span><span class="pun">=&gt;</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pun">.</span><span class="typ">IsBetween</span><span class="pun">(</span><span class="pln">start</span><span class="pun">,</span><span class="pln"> end</span><span class="pun">));</span></code></pre>
+
+<p>I see you've provided some samples with the dates as strings. I would <em>definitely</em> keep the parsing logic (<code>DateTime.ParseExact</code>or other) separate from the query, if at all possible.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/4087339" title="short permalink to this answer" class="short-link" id="link-post-4087339">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4087339/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/4087339/revisions" title="show all edits to this post">edited <span title="2012-07-04 10:51:04Z" class="relativetime">Jul 4 '12 at 10:51</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-11-03 13:09:56Z" class="relativetime">Nov 3 '10 at 13:09</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/412770/ani"><div class="gravatar-wrapper-32"><img src="./date_files/bd32d371f1a7ece94fe52a078ea9eee1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/412770/ani">Ani</a><br>
+        <span class="reputation-score" title="reputation score 65115" dir="ltr">65.1k</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="131 silver badges"><span class="badge2"></span><span class="badgecount">131</span></span><span title="218 bronze badges"><span class="badge3"></span><span class="badgecount">218</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4087339" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-4395754" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks I was having problems with the &gt;= and needing to create a DateTime.  I find Linq a little confusing because they changed the syntax.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/107127/simon" title="101 reputation" class="comment-user owner">Simon</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4395754_4087339"><span title="2010-11-03 13:17:39Z" class="relativetime-clean">Nov 3 '10 at 13:17</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4395786" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Simon: Cheers. The <code>&gt;=</code> doesn't have much to do with LINQ; it's an overloaded operator on <code>DateTime.</code> You can use <code>DateTime.CompareTo</code> or similar if you prefer.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/412770/ani" title="65115 reputation" class="comment-user">Ani</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4395786_4087339"><span title="2010-11-03 13:19:55Z" class="relativetime-clean">Nov 3 '10 at 13:19</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4395841" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thanks Ani - the DateTime.Parse was just for my example in LinqPad as I did not want to post a clients code onto the internet.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/107127/simon" title="101 reputation" class="comment-user owner">Simon</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4395841_4087339"><span title="2010-11-03 13:24:29Z" class="relativetime-clean">Nov 3 '10 at 13:24</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4395858" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Ah, ok. Wise. --</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/412770/ani" title="65115 reputation" class="comment-user">Ani</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4395858_4087339"><span title="2010-11-03 13:26:33Z" class="relativetime-clean">Nov 3 '10 at 13:26</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-14911652" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">the only thing i've done is to change the extention function to stattic for global usage</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/185605/gregory" title="844 reputation" class="comment-user">Gregory</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment14911652_4087339"><span title="2012-07-04 10:30:58Z" class="relativetime-clean">Jul 4 '12 at 10:30</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4087339" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1779585901",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1779585901"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6NzI0Mjk1LCJkaSI6IjM4YjRkZDAzZGJhOTRiZDZiZDUwNzdlOGNmY2YxOTc4IiwiZG0iOjEsImZjIjo3NTQwODksImZsIjo0MTAxODMsImlwIjoiMTA0LjIzNi4xNi41NSIsImt3IjoibGlucSxjIy00LjAsbGFtYmRhIiwibnciOjIyLCJwYyI6MCwicHIiOjE1NjgsInJ0IjoxLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vIiwic3QiOjgyNzcsInVrIjoidWUxLWJlMzZlMGM4OTYyZDQ0ZTdhYTEyNGI5YzE2Yzc2MjA1Iiwiem4iOjQ0LCJ0cyI6MTQzMzQ4MDY1MzYwOSwiYmYiOnRydWUsInBuIjoiYWR6ZXJrMTc3OTU4NTkwMSIsInVyIjoiaHR0cDovL2NhcmVlcnMuc3RhY2tvdmVyZmxvdy5jb20vY3YvZ2V0LW9uZT91dG1fc291cmNlPXN0YWNrb3ZlcmZsb3cuY29tJnV0bV9tZWRpdW09YWQmdXRtX2NhbXBhaWduPWNhbmRpZGF0ZXMtYWRkLWN2JnV0bV9jb250ZW50PWxiLWNhcmVlcnMtbGlua2VkaW4ifQ&s=dXewAIq1pN1w-yvNUbS558yOWZI" rel="nofollow" target="_blank" title=""><img src="./date_files/cfa6d7112df94e14b466de3f85f0bcac.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./date_files/i(1).gif"></div>
+  
+<a name="4087352"></a>
+<div id="answer-4087352" class="answer" data-answerid="4087352" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="4087352">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="typ">Datetime</span><span class="pln"> DT1 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="typ">Parse</span><span class="pun">(</span><span class="str">"01 Jan 2010"</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">Datetime</span><span class="pln"> DT2 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="typ">Parse</span><span class="pun">(</span><span class="str">"01 Jan 2011"</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> query </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> l </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">list</span><span class="pln">
+            </span><span class="kwd">where</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">&gt;=</span><span class="pln"> DT1 </span><span class="pun">&amp;&amp;</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> DT2
+            </span><span class="kwd">select</span><span class="pln"> l</span><span class="pun">;</span></code></pre>
+
+<p>in linq you use the &amp;&amp; and || like you would in a normal boolean statement of C#.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/4087352" title="short permalink to this answer" class="short-link" id="link-post-4087352">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4087352/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-11-03 13:11:37Z" class="relativetime">Nov 3 '10 at 13:11</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/275990/stefanvds"><div class="gravatar-wrapper-32"><img src="./date_files/65b213db67b82c186ed5d354bf066f6c" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/275990/stefanvds">Stefanvds</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,899</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="25 silver badges"><span class="badge2"></span><span class="badgecount">25</span></span><span title="59 bronze badges"><span class="badge3"></span><span class="badgecount">59</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4087352" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4087352" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="4087344"></a>
+<div id="answer-4087344" class="answer" data-answerid="4087344" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="4087344">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-cs prettyprint prettyprinted"><code><span class="kwd">var</span><span class="pln"> query </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> l </span><span class="kwd">in</span><span class="pln"> </span><span class="typ">list</span><span class="pln">
+        </span><span class="kwd">where</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2010</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> l</span><span class="pun">.</span><span class="typ">DateValue</span><span class="pln"> and </span><span class="typ">DateValue</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2011</span><span class="pun">)</span><span class="pln">
+        </span><span class="kwd">select</span><span class="pln"> l</span><span class="pun">;</span></code></pre>
+
+<p>of course, normally warning about timezones and different times on clients and servers apply</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/4087344" title="short permalink to this answer" class="short-link" id="link-post-4087344">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4087344/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-11-03 13:10:27Z" class="relativetime">Nov 3 '10 at 13:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/26479/david-kemp"><div class="gravatar-wrapper-32"><img src="./date_files/947a52f105a58cac8ba27dd456db54ab" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/26479/david-kemp">David Kemp</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,973</span><span title="12 silver badges"><span class="badge2"></span><span class="badgecount">12</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4087344" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-4397414" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Looks like the extension methods are not supported by Linq to Entities if I link to the entity framework.  Does this sound correct or am I missing something.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/107127/simon" title="101 reputation" class="comment-user owner">Simon</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4397414_4087344"><span title="2010-11-03 15:18:23Z" class="relativetime-clean">Nov 3 '10 at 15:18</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-4397764" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">NotSupportedException: Method 'Boolean IsBetween(System.Nullable`1[System.DateTime], System.DateTime, System.DateTime, Boolean)' has no supported translation to SQL.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/107127/simon" title="101 reputation" class="comment-user owner">Simon</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#comment4397764_4087344"><span title="2010-11-03 15:43:42Z" class="relativetime-clean">Nov 3 '10 at 15:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4087344" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/4087311/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="4087311">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.com/">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="30310699b829c37fa8cb1965031e46c5">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?returnurl=%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f4087311%2fequivalent-of-sql-between-statement-using-linq-or-a-lambda-expression%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/linq" class="post-tag" title="show questions tagged &#39;linq&#39;" rel="tag">linq</a> <a href="http://stackoverflow.com/questions/tagged/c%23-4.0" class="post-tag" title="show questions tagged &#39;c#-4.0&#39;" rel="tag">c#-4.0</a> <a href="http://stackoverflow.com/questions/tagged/lambda" class="post-tag" title="show questions tagged &#39;lambda&#39;" rel="tag">lambda</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2010-11-03 13:07:28Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>20625 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/4087311/equivalent-of-sql-between-statement-using-linq-or-a-lambda-expression?lastactivity" class="lastactivity-link" title="2013-09-18 07:08:45Z">1 year ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/06/stack-overflow-in-portuguese-now-with-less-beta/?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackoverflow" title="Stack Overflow"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/06/stack-overflow-in-portuguese-now-with-less-beta/?cb=1" class="question-hyperlink">Stack Overflow in Portuguese: now with less beta!</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk39642770",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk39642770"><div id="SE20-ad-container" style="height: 250px; width: 220px;">
+<style>
+#launched-ad { width: 220px; height: 250px; overflow: hidden; background: url(//sstatic.net/stackexchange/Img/launched-ads/skeptics.jpg) no-repeat bottom center; }
+#launched-ad-link { display: block; width: 220px; height: 250px; line-height: 1.2; color: #fff !important; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 20px; line-height: 25px; text-decoration: none; cursor: pointer; }
+#launched-ad-inner { width: 180px; margin: 20px 20px 0 20px;}
+</style>
+<a id="launched-ad-link" href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MTcsImJ0IjowLCJjbSI6OTkzLCJjaCI6MTE3OCwiY3IiOjMxOTQsImRpIjoiNDc0NzAyMzM4ZTMwNGRlZGFhMDRlZTEwNWMzNGViYjkiLCJkbSI6MSwiZmMiOjExNzE5LCJmbCI6Mjg0MSwiaXAiOiIxMDQuMjM2LjE2LjU1Iiwia3ciOiJsaW5xLGMjLTQuMCxsYW1iZGEiLCJudyI6MjIsInBjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtYmUzNmUwYzg5NjJkNDRlN2FhMTI0YjljMTZjNzYyMDUiLCJ6biI6NDUsInRzIjoxNDMzNDgwNjUzNjExLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmszOTY0Mjc3MCIsInVyIjpudWxsfQ&s=6OMBQ2LseuaV_Au5EviNrgikmPU&url=http%3A%2F%2Fskeptics.stackexchange.com%2Fquestions%2F27940%2Fmay-only-licensed-electricians-change-light-bulbs-in-australia%3Futm_medium%3Dad%26utm_source%3Dhttp-stackoverflow-com-questions-16736856-what-should-be-in-my-gitignore-for-a%26utm_campaign%3Dskeptics.stackexchange.com-promo%26utm_content%3D27940">
+    <div id="launched-ad">
+        <div id="launched-ad-inner">May only licensed electricians change light bulbs in Australia?</div>
+    </div>
+</a>
+</div><script type="text/javascript">window._launchedAdUrl= "http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MTcsImJ0IjowLCJjbSI6OTkzLCJjaCI6MTE3OCwiY3IiOjMxOTQsImRpIjoiNDc0NzAyMzM4ZTMwNGRlZGFhMDRlZTEwNWMzNGViYjkiLCJkbSI6MSwiZmMiOjExNzE5LCJmbCI6Mjg0MSwiaXAiOiIxMDQuMjM2LjE2LjU1Iiwia3ciOiJsaW5xLGMjLTQuMCxsYW1iZGEiLCJudyI6MjIsInBjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtYmUzNmUwYzg5NjJkNDRlN2FhMTI0YjljMTZjNzYyMDUiLCJ6biI6NDUsInRzIjoxNDMzNDgwNjUzNjExLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmszOTY0Mjc3MCIsInVyIjpudWxsfQ&s=6OMBQ2LseuaV_Au5EviNrgikmPU";</script><script type="text/javascript" src="./date_files/js"></script><img height="0px" width="0px" border="0" style="position:absolute;" src="./date_files/i(2).gif"></div>  
+        <div id="hireme" class="orange near-you tagged"><a href="http://careers.stackoverflow.com/jobs/location/New%20York%2C%20New%20York%2C%20United%20States" target="_blank" data-loc="New%20York%2C%20New%20York%2C%20United%20States" data-hf="h" class="top"> <span>Jobs near you</span></a><ul class="jobs"><li><a data-cid="170706" href="http://careers.stackoverflow.com/jobs/84469/software-engineer-trade-it" target="_blank" title="Software Engineer at Trade IT. Click to learn more.">Software Engineer<br><div class="company">Trade IT</div><div class="location" title="New York, NY">New York, NY</div><span class="post-tag">css</span><span class="post-tag">html</span></a></li><li><a data-cid="171091" href="http://careers.stackoverflow.com/jobs/84860/full-stack-developer-sendence" target="_blank" title="Full Stack Developer at Sendence. Click to learn more.">Full Stack Developer<br><div class="company">Sendence</div><div class="location" title="New York, NY">New York, NY</div><span class="post-tag">css</span><span class="post-tag">javascript</span></a></li><li class="city"><a href="http://careers.stackoverflow.com/jobs/location/New%20York%2C%20New%20York%2C%20United%20States" target="_blank" data-hf="f" data-loc="New%20York%2C%20New%20York%2C%20United%20States">More jobs near New York…</a></li></ul><img class="impression" src="./date_files/i" style="display:none;"></div>
+			<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackoverflow.com/" id="h-chat-link" title="46 users active in 31 rooms the last 60 minutes">46 People Chatting</a></h4>
+
+<div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="JavaScript"><a href="http://chat.stackoverflow.com/rooms/17">JavaScript</a></span></h3><span title="2015-06-05 04:33:08Z" class="ad502-last-message">31 mins ago - <a href="http://chat.stackoverflow.com/users/499214">Jan Dvorak</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/499214"><img height="23" width="23" title="Jan Dvorak: 31 mins ago" src="./date_files/PObJM.png"></a><a href="http://chat.stackoverflow.com/users/2780711"><img height="23" width="23" title="icecub: 31 mins ago" src="./date_files/yeJ7R.jpg"></a><a href="http://chat.stackoverflow.com/users/1514572"><img height="23" width="23" title="monners: 36 mins ago" src="./date_files/8e44332313cc7335e98748739977ea5d"></a><a href="http://chat.stackoverflow.com/users/401137"><img height="23" width="23" title="Some Guy: 59 mins ago" src="./date_files/j25bf.png"></a><a href="http://chat.stackoverflow.com/users/829835"><img height="23" width="23" title="rlemon: 1 hour ago" src="./date_files/y9osx.jpg"></a><a href="http://chat.stackoverflow.com/users/1596138"><img height="23" width="23" title="Jhawins: 3 hours ago" src="./date_files/Ph38Z.jpg"></a><a href="http://chat.stackoverflow.com/users/855760"><img height="23" width="23" title="Abhishrek: 3 hours ago" src="./date_files/x4ZMC.jpg"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="Lounge&lt;C++&gt;"><a href="http://chat.stackoverflow.com/rooms/10">Lounge&lt;C++&gt;</a></span></h3><span title="2015-06-05 04:30:07Z" class="ad502-last-message">34 mins ago - <a href="http://chat.stackoverflow.com/users/3924272">edition</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/3924272"><img height="23" width="23" title="edition: 34 mins ago" src="./date_files/GFyL3.png"></a><a href="http://chat.stackoverflow.com/users/4836280"><img height="23" width="23" title="Muhammad Raza: 53 mins ago" src="./date_files/afd8314892edea954c01b93219deb0d3"></a><a href="http://chat.stackoverflow.com/users/1619294"><img height="23" width="23" title="Mark Garcia: 1 hour ago" src="./date_files/fu56P.jpg"></a><a href="http://chat.stackoverflow.com/users/4892076"><img height="23" width="23" title="jaggedSpire: 1 hour ago" src="./date_files/s6vwT.png"></a><a href="http://chat.stackoverflow.com/users/4714970"><img height="23" width="23" title="Aequitas: 1 hour ago" src="./date_files/e29b1cd1e24528881ced8e0f15cc18db"></a><a href="http://chat.stackoverflow.com/users/2025214"><img height="23" width="23" title="caps: 1 hour ago" src="./date_files/wLpN8.jpg"></a><a href="http://chat.stackoverflow.com/users/179910"><img height="23" width="23" title="Jerry Coffin: 3 hours ago" src="./date_files/d8962238339d771f0348967be6f97b1b"></a></div></div></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackoverflow.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":46,"activeRooms":31,"rooms":[{"name":"JavaScript","id":17,"lastPost":1433478788,"posts":2641630,"users":[{"name":"Jan Dvorak","id":499214,"emailhash":"!http://i.stack.imgur.com/PObJM.png?s=128\u0026g=1","lastPost":1433478787},{"name":"icecub","id":2780711,"emailhash":"!http://i.stack.imgur.com/yeJ7R.jpg?s=128\u0026g=1","lastPost":1433478740},{"name":"monners","id":1514572,"emailhash":"8e44332313cc7335e98748739977ea5d","lastPost":1433478489},{"name":"Some Guy","id":401137,"emailhash":"!http://i.stack.imgur.com/j25bf.png?s=128\u0026g=1","lastPost":1433477104},{"name":"rlemon","id":829835,"emailhash":"!http://i.stack.imgur.com/y9osx.jpg?s=128\u0026g=1","lastPost":1433476900},{"name":"Jhawins","id":1596138,"emailhash":"!http://i.stack.imgur.com/Ph38Z.jpg?s=128\u0026g=1","lastPost":1433469609},{"name":"Abhishrek","id":855760,"emailhash":"!http://i.stack.imgur.com/x4ZMC.jpg?s=128\u0026g=1","lastPost":1433466348}],"messages":[{"date":1433478788,"user":"Jan Dvorak","userid":499214}],"singleImage":false,"tags":["ecmascript","es6","iojs","javascript","nodejs","promises"]},{"name":"Lounge\u003cC++\u003e","id":10,"lastPost":1433478607,"posts":3753538,"users":[{"name":"edition","id":3924272,"emailhash":"!http://i.stack.imgur.com/GFyL3.png?s=128\u0026g=1","lastPost":1433478607},{"name":"Muhammad Raza","id":4836280,"emailhash":"afd8314892edea954c01b93219deb0d3","lastPost":1433477461},{"name":"Mark Garcia","id":1619294,"emailhash":"!http://i.stack.imgur.com/fu56P.jpg?s=128\u0026g=1","lastPost":1433476453},{"name":"jaggedSpire","id":4892076,"emailhash":"!http://i.stack.imgur.com/s6vwT.png?s=128\u0026g=1","lastPost":1433474890},{"name":"Aequitas","id":4714970,"emailhash":"e29b1cd1e24528881ced8e0f15cc18db","lastPost":1433474807},{"name":"caps","id":2025214,"emailhash":"!http://i.stack.imgur.com/wLpN8.jpg?s=128\u0026g=1","lastPost":1433474775},{"name":"Jerry Coffin","id":179910,"emailhash":"d8962238339d771f0348967be6f97b1b","lastPost":1433466990}],"messages":[{"date":1433478607,"user":"edition","userid":3924272}],"singleImage":false,"tags":["c++","c++11","c++14","c++-faq"]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/1447635?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">26</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/1447635/linq-between-operator?lq=1" class="question-hyperlink">LINQ Between Operator</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/9126128?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/9126128/check-the-given-date-is-present-between-fromdate-to-todate?lq=1" class="question-hyperlink">check the given date is present between fromdate to todate</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/29818083?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/29818083/find-a-string-value-between-2-strings?lq=1" class="question-hyperlink">Find a string value between 2 strings</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/23104400?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/23104400/how-to-speed-up-a-search-in-a-large-sqlite-database?lq=1" class="question-hyperlink">How to speed up a search in a large sqlite database</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/25850855?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/25850855/how-to-use-between-clause-in-windows-phone-azure-storage-i-want-to-get-data-in-b?lq=1" class="question-hyperlink">how to use between clause in windows phone azure storage.i want to get data in between two dates in windows phone</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/671968?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">246
+    </div>
+</a><a href="http://stackoverflow.com/questions/671968/retrieving-property-name-from-lambda-expression?rq=1" class="question-hyperlink">Retrieving Property name from lambda expression</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/1635497?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">167
+    </div>
+</a><a href="http://stackoverflow.com/questions/1635497/orderby-descending-in-lambda-expression?rq=1" class="question-hyperlink">OrderBy descending in Lambda expression?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/3593520?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/3593520/how-to-use-linq-lambda-with-observablecollectiont?rq=1" class="question-hyperlink">How to use Linq/Lambda with ObservableCollection&lt;T&gt;</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/4989694?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/4989694/select-func-in-lambda-expression?rq=1" class="question-hyperlink">Select Func in Lambda Expression</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/11223645?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">-3
+    </div>
+</a><a href="http://stackoverflow.com/questions/11223645/linq-to-and-lambda-expressions?rq=1" class="question-hyperlink">Linq to … and Lambda Expressions</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/12210021?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/12210021/is-there-a-way-to-turn-this-small-method-into-a-lambda-or-linq-statement?rq=1" class="question-hyperlink">Is there a way to turn this small method into a lambda or linq statement?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/12647850?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/12647850/linq-lamda-expression?rq=1" class="question-hyperlink">Linq Lamda Expression</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/17039249?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/17039249/sql-statement-to-linq-lambda?rq=1" class="question-hyperlink">SQL statement to linq lambda</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/21129733?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/21129733/convert-linq-query-to-lambda-expression?rq=1" class="question-hyperlink">Convert linq query to lambda expression</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/21919695?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/21919695/c-sharp-linq-expression-in-lambda-with-contains?rq=1" class="question-hyperlink">C# linq expression in lambda with contains</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/155549/difference-of-two-squared-normal-dependent-variables" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Difference of two squared normal dependent variables
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/250367/antonym-of-nomad" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Antonym of nomad
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/101908/why-are-all-opengl-function-calls-prefixed-with-q-in-the-doom-3-source-code" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are all OpenGL function calls prefixed with "q" in the Doom 3 source code?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/30614396/what-does-i-i-i-1-1-do" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does i = (i, ++i, 1) + 1; do?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/155580/cost-function-in-ols-linear-regression" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Cost function in OLS linear regression
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/30656811/combining-elements-in-jagged-2d-arrays-into-one-new-jagged-2d-array-deep-copy-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Combining elements in jagged 2D arrays into one new jagged 2D array (Deep Copy issue)
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/187403/how-do-grandfather-clocks-keep-going" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do grandfather clocks keep going?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/15979/can-isaac-get-an-even-tan" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can Isaac get an even tan?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/47714/is-it-appropriate-to-talk-to-the-supervisor-about-the-lousy-internship-program" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it appropriate to talk to the supervisor about the lousy internship program?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/187719/is-simultaneity-well-defined-in-general-relativity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is simultaneity well defined in general relativity?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-skeptics" title="Skeptics Stack Exchange"></div><a href="http://skeptics.stackexchange.com/questions/27927/has-the-red-cross-raised-half-a-billion-dollars-for-haiti-to-build-6-houses" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:212 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Has the Red Cross raised half a billion dollars for Haiti to build 6 houses?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-skeptics" title="Skeptics Stack Exchange"></div><a href="http://skeptics.stackexchange.com/questions/27934/is-eating-rice-harmful-to-birds" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:212 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is eating rice harmful to birds?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/207276/how-are-file-types-known-if-not-from-file-suffix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How are file types known if not from file suffix?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/250373/what-does-high-letter-low-letter-mean-in-contrast-to-low-number-high-number" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does “high letter, low letter” mean in contrast to “low number, high number”?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/79565/does-visual-design-really-affect-ux" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does visual design really affect UX?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/250513/are-androphilic-males-persons-with-a-homosexual-erotic-development" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are androphilic males persons with a homosexual erotic development?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/48735/how-significant-are-advance-purchase-discounts-on-dutch-and-belgian-railways" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How significant are advance purchase discounts on Dutch and Belgian railways?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/18402/lets-weaponize-jellyfish" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Let's weaponize jellyfish
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/20549/my-4-year-old-refers-to-himself-as-me" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My 4-year-old refers to himself as me
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/285860/why-do-we-use-the-word-sprint" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do we use the word "sprint"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/91658/why-not-use-the-ring" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why not use the ring?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/15943/tasty-who-am-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Tasty - Who am I?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/32399/why-do-cyclic-hydrocarbons-have-higher-boiling-points-than-their-acyclic-isomers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do cyclic hydrocarbons have higher boiling points than their acyclic isomers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/923590/what-is-the-actual-speed-of-sata-3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the actual speed of SATA 3?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/4087311" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/4087311/ivc/e05f');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/4087311/ivc/e05f" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-cs</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.6.5.2635
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('linq,c%23-4.0,lambda');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|linq|c#-4.0|lambda|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    
+<script type="text/javascript" src="./date_files/p"></script></body></html>

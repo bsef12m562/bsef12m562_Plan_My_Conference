@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "abvc";
+    Layout = "~/Views/Shared/layouttabbed.cshtml";
+}
+@using Conference.Models
+@model List<Hotel>
+          
+
+@{ Customer c = (Customer)HttpContext.Current.Session["user"];}
+<html>
+<head>
+    <title>Tabbed Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+      /*----- Tabs -----*/
+      .tabs {
+          width: 100%;
+          display: inline-block;
+      }
+
+      /*----- Tab Links -----*/
+      /* Clearfix */
+      .tab-links:after {
+          display: block;
+          clear: both;
+          content: '';
+      }
+
+      .tab-links li {
+          margin: 0px 5px;
+          float: left;
+          list-style: none;
+      }
+
+      .tab-links a {
+          padding: 9px 15px;
+          display: inline-block;
+          border-radius: 3px 3px 0px 0px;
+          background: #7FB5DA;
+          font-size: 16px;
+          font-weight: 600;
+          color: #4c4c4c;
+          transition: all linear 0.15s;
+      }
+
+      .well {
+          background-image: url(../Images/b1.jpg);
+      }
+          .tab-links a:hover {
+              background: #a7cce5;
+              text-decoration: none;
+          }
+
+      li.active a, li.active a:hover {
+          background: #fff;
+          color: #4c4c4c;
+      }
+
+      /*----- Content of Tabs -----*/
+      .tab-content {
+          padding: 15px;
+          border-radius: 3px;
+          box-shadow: -1px 1px 1px rgba(0,0,0,0.15);
+          background: #fff;
+      }
+
+      .tab {
+          display: none;
+      }
+
+          .tab.active {
+              display: block;
+          }
+      .first {
+          float: left;
+          width: 40%;
+          height: 50%;
+          background-color: transparent;
+          max-height: 100%;
+          max-width: 100%;
+          padding:5px 5px 5px 5px
+      }
+
+      .second {
+          float: right;
+          width: 60%;
+          height: 50%;
+          background-color: transparent;
+          max-height: 100%;
+          max-width: 100%;
+      }
+
+      img {
+          margin-top: 10%;
+          max-height: 100%;
+          max-width: 100%;
+          width:250px;
+          height:250px;
+      }
+
+
+      h3 {
+          font-family: Comic Sans MS, cursive, sans-serif;
+          color: yellow;
+      }
+
+  </style>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.tabs .tab-links a').on('click', function (e) {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                e.preventDefault();
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+    
+    <div class="tabs">
+        
+        <ul class="tab-links">
+            <li class="active"><a href="#tab1">Available Hotels </a></li>
+            <li><a href="#tab2">Packages</a></li>
+           
+        </ul>
+
+
+        <div class="tab-content">
+       
+            
+            <div id="tab1" class="tab active">
+               
+              
+                <table class="table table-striped">
+                    <thead>
+                       
+                        <tr>
+                            <th>#</th>
+                            <th>NAME </th>
+                            <th>LOCATION</th>
+                            <th>BUDGET</th>
+                            <th>CAPACITY</th>
+                            <th>STARTING DATE</th>
+                            <th>ENDING DATE</th>
+                            <th>TYPE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var s in Model)
+                        {
+                            <tr>
+                                <td>@s.Id</td>
+                                <td>@s.HotelName</td>
+                                <td>@s.Location</td>
+                                <td>@s.Budget</td>
+                                <td>@s.Capacity</td>
+                                <td>@s.StartingAvailableDate</td>
+                                <td>@s.EndingAvailableDate</td>
+                                <td>@s.Type</td>
+
+
+                                <td>@Html.ActionLink("Preview", "Preview", new { id = s.Id, sdate = @ViewBag.startingcustdate, edate = @ViewBag.endingcustdate }, new { @class = "btn btn-primary" })@Html.ActionLink("BookIt", "bookhotel", new { id = s.Id, sdate = @ViewBag.startingcustdate, edate = @ViewBag.endingcustdate }, new { @class = "btn btn-success" })</td>
+                            </tr>
+                        
+                        }
+                    </tbody>
+                </table>
+                <script>
+
+
+                    function showDialogPreview(x) {
+
+                        window.location.assign("/Customer/Preview?id=" + x);
+
+                    }
+
+                </script>
+    
+                </div>
+
+            <div id="tab2" class="tab">
+                <table class="table table-striped">
+                    <thead>
+                        @*<tr>
+                            <th>#</th>
+                            <th>NAME </th>
+                            <th>LOCATION</th>
+                            <th>PRICE</th>
+                            <th>CAPACITY</th>
+                            <th>STARTING DATE</th>
+                            <th>ENDING DATE</th>
+                            <th>DISCOUNT</th>
+                            <th>DISCOUNTED PRICE</th>
+                            <th>TYPE</th>
+                        </tr>*@
+                    </thead>
+                    <tbody>
+                       
+                        @foreach (var i in @ViewBag.listofdeals)
+                        {
+                            RecordsEntities re = new RecordsEntities();
+                            var dscount = (float)i.Discount / 100;
+                            var d_price = i.Price * dscount;
+                            var pr = i.Price - d_price;
+                            string name = i.HotelName;
+
+                       //     var www = re.Hotels.FirstOrDefault(x => x.HotelName.Equals(name));
+                            string a = "pic";
+                            string path = @"~Images\" + a + ".jpg";
+                            string p = @"~\Images\" + a + ".jpg" ;
+                           
+                            <div class="container-fluid box" style="border:solid;border-color:black">
+                                <div class="container first well-sm">
+                                    <img src=p />
+
+                                </div>
+                              
+                                <div class="container second well-sm">
+                                    <h3 style="font-size:40px; margin-top:5%">@i.HotelName</h3>
+                                    <p style="color:black; margin-top:2px;">
+                                        @i.Description
+
+                                        @i.HotelName's planning process stress-free and to discover what will make the event uniquely special. We make design and planning simple for our clients - and simple isn't easy.
+
+                                        Born at the intersection of clever and creative, Brilliant Event Planning harnesses the power of emotion to make your most important day less stressful and more beautiful.
+                                    </p>
+                                    <h5>Before: @i.Price</h5>
+                                    <h5>Discount:@i.Discount%</h5>
+                                    <h5>Now:@pr</h5><h5 style="margin-left:20%;"></h5>
+                                    @Html.ActionLink("BookIt", "bookPackage", new {hname = @i.HotelName,pid = i.Id ,sdate = @ViewBag.startingcustdate, edate = @ViewBag.endingcustdate }, new { @class = "btn btn-success" })
+                                </div>
+                            </div>
+                        }
+                        @*@foreach (var i in @ViewBag.listofdeals)
+                        {
+                            var dscount = (float)i.Discount/100;
+                            var d_price = i.Price * dscount;
+                            var pr = i.Price - d_price; 
+                            <tr>
+                                <td></td>
+                                <td>@i.Id</td>
+                                <td>@i.HotelName</td>
+                                <td>@i.Location</td>
+                                <td>@i.Price</td>
+                                <td>@i.Capacity</td>
+                                <td>@i.FromDate</td>
+                                <td>@i.ToDate</td>
+                                <td>@i.Discount%</td>
+                                <td>@pr</td>
+                                <td>@i.Type</td>
+
+                                <td>@Html.ActionLink("Preview", "Preview", new { id = i.Id, sdate = @ViewBag.startingcustdate, edate = @ViewBag.endingcustdate }, new { @class = "btn btn-primary" })
+                            </tr>
+                        }*@
+                        </tbody>
+                    </table>
+            </div>
+
+           
+        </div>
+    @*</div>*@
+</body>
+</html>

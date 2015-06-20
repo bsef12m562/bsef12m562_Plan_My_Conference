@@ -1,0 +1,284 @@
+﻿
+
+@{
+    ViewBag.Title = "Abstract";
+    Layout = "~/Views/Shared/layouttabbed.cshtml";
+}
+
+@using Conference.Models
+
+
+
+@{ Customer c = (Customer)HttpContext.Current.Session["user"];}
+<html>
+<head>
+    <title>Tabbed Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        /*----- Tabs -----*/
+        .tabs {
+            width: 100%;
+            display: inline-block;
+        }
+
+        /*----- Tab Links -----*/
+        /* Clearfix */
+        .tab-links:after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+
+        .tab-links li {
+            margin: 0px 5px;
+            float: left;
+            list-style: none;
+        }
+
+        .tab-links a {
+            padding: 9px 15px;
+            display: inline-block;
+            border-radius: 3px 3px 0px 0px;
+            background: #7FB5DA;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4c4c4c;
+            transition: all linear 0.15s;
+        }
+
+        .well {
+            background-image: url(../Images/b1.jpg);
+        }
+
+        .tab-links a:hover {
+            background: #a7cce5;
+            text-decoration: none;
+        }
+
+        li.active a, li.active a:hover {
+            background: #fff;
+            color: #4c4c4c;
+        }
+
+        /*----- Content of Tabs -----*/
+        .tab-content {
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: -1px 1px 1px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+
+        .tab {
+            display: none;
+        }
+
+            .tab.active {
+                display: block;
+            }
+
+        .first {
+            float: left;
+            width: 40%;
+            height: 50%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .second {
+            float: right;
+            width: 60%;
+            height: 50%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        img {
+            margin-top: 10%;
+            max-height: 100%;
+            max-width: 100%;
+            width: 250px;
+            height: 250px;
+        }
+
+
+        h3 {
+            font-family: Comic Sans MS, cursive, sans-serif;
+            color: yellow;
+        }
+    </style>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.tabs .tab-links a').on('click', function (e) {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                e.preventDefault();
+            });
+        });
+
+
+   </script>
+
+</head>
+<body>
+
+    <div class="tabs">
+
+        <ul class="tab-links">
+            <li class="active"><a href="#tab1">ADD AN ABSTRACT</a></li>
+            <li><a href="#tab2">ALL ABSTRACT</a></li>
+            
+
+        </ul>
+
+
+       <div class="tab-content">
+
+
+            <div id="tab1" class="tab active">
+            <h2 style="text-align:center;color:black">ABSTRACT FOR PAPERS</h2>
+                <h4>Add An Abstract</h4>
+                <form method="post" action="SaveAbstract" enctype="multipart/form-data">
+                    <label>TITLE</label>
+                    <input type="text" style="margin-left:40px;" required name="Title" />
+
+                    <br />
+                    <br />
+
+                    <label>CATEGORY</label>
+                    <select name="Category"  required>
+
+                @{
+                    RecordsEntities re = new RecordsEntities();
+                    var x = re.Categories.ToList();
+                    foreach(var w in x)
+                    {
+                        <option>@w.CategoryName</option>
+                    }
+
+
+                }
+
+
+            </select>
+                 
+                    <br />
+                    <br />
+                    <label>WRITE ABSTRACT OR UPLOAD FILE</label><input type="file" name="filename" />
+                    <br />
+                    <textarea class="longInput" cols="140" rows="20" placeholder="If you have selected a file then do not write the abstract.Just uploadthe file and press SAVE button below." name="AbstractDesc"></textarea>
+                    <br />
+                    <button type="submit" style="height:30px;width:50px;" id="savebtn">SAVE</button>
+                </form>
+
+            </div>
+
+
+            <div id="tab2" class="tab">
+               @*/////*@
+                <div id="page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Your Abstracts</h1>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                        <!-- /.row -->
+
+
+                        <div class="wrapper" style="padding-top:10em; ">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>TITLE </th>
+                                        <th>CATEGORY</th>
+                                      
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{RecordsEntities red = new RecordsEntities();
+                                      var x1 = re.Abstracts.ToList();
+                                      
+                                      
+                                    foreach (var o1 in x1)
+                                    {
+                                        <tr>
+
+                                            <td>@o1.Id</td>
+                                            <td>@o1.Title</td>
+                                            <td>@o1.Category</td>
+                                          
+
+
+
+                                            <td><button onclick="showDialog(@o1.Id)" class="btn btn-danger">Delete</button></td>
+                                        </tr>
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+                            <script>
+                                function showDialog(x)
+                                {
+                                    var r = confirm("Are you sure you want to delete?");
+                                    if (r == true)
+                                        window.location.assign("/Admin/deletecustomer?id=" + x);
+                                    else
+                                        ;
+                                }
+
+                            </script>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @*/////*@
+            </div>
+
+           <div id="tab3" class="tab">
+               adskhfk
+           </div>
+
+
+      </div>
+        </div>
+        @*</div>*@
+</body>
+</html>

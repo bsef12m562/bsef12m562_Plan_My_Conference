@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Login2";
+    Layout = "~/Views/Shared/layout2.cshtml";
+}
+
+@using Conference.Models;
+<html>
+<head>
+    <title>Home-Login</title>
+    <style>
+        form {
+            width: 80%;
+            margin-left: 30%;
+            margin-top: 20px;
+        }
+
+    
+
+        label {
+            font-size: 20px;
+            color: white;
+            margin-top: 10px;
+        }
+
+    </style>
+   
+
+
+
+</head>
+<body>
+    <h1 style="text-align:center; margin-left:28px;color:navajowhite ">SIGN IN</h1>
+
+  
+
+    <form action="~/Admin/LoginValidate" method="post">
+        <label>UserName</label>
+        <input type="text" name="Username" required /><br /><br />
+
+        @*<div id="checking">Checking...</div>
+            <form action="~/Admin/LoginValidate" method="post">
+                <label>UserName</label>
+                <input type="text" name="Username" required /><br /><br /><input type="button" id="b1" value="Check" />
+                @Scripts.Render("~/bundles/jquery")
+                <script>
+
+                    $(document).ready(function () {
+
+                        $('#checking').hide();
+
+                        $('#b1').click(function () {
+
+                            var userName = $('#UserName').val();
+
+                            //alert('User Name ='+ userName);
+                            $('#checking').show();
+                            $.getJSON("/Admin/CheckUserName?UserName=" + userName, function (data) {
+                                $('#checking').hide();
+                                if (data) {
+                                    $('#result').text("User already exists in database");
+
+                                }
+                                else {
+                                    $('#result').text("User Name is available");
+                                }
+                            });
+
+                        });
+
+                    });
+                </script>*@
+
+        <label>Password</label>
+        <input type="password" name="Password" required /><br /><br />
+
+        <label>Email</label>
+        <input type="email" name="Email" style="margin-left:5%;" placeholder="optional" /><br /><br />
+
+        <input type="submit" style="margin-left:20%; background-color:black; color:white; height:30px; width:80px;" value="SignIn" />
+
+
+    </form>
+
+   
+
+    
+</body>
+
+
+
+
+</html>

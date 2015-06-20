@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/layoutsignin.cshtml";
+}
+
+
+@model Conference.Models.Customer
+
+<html>
+<head>
+   
+    <title>Login</title>
+    <style>
+        form {
+            width: 80%;
+            margin-left:30%;
+          
+            margin-top:20px;
+        }
+
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 99999;
+            opacity: 0;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            pointer-events: none;
+        }
+
+            .modalDialog:target {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .modalDialog > div {
+                width: 600px;
+                height: 450px;
+                position: relative;
+                margin: 7% auto;
+                padding: 5px 20px 13px 20px;
+                border-radius: 10px;
+                background: #393939;
+                background-color:#393939;
+                background: -moz-linear-gradient(#fff, #999);
+                background: -webkit-linear-gradient(#fff, #999);
+                background: -o-linear-gradient(#fff, #999);
+            }
+
+        .close {
+            background: black;
+            color: black;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+            .close:hover {
+                background: #00d9ff;
+            }
+
+        label
+        {
+            font-size:20px;
+            color:white;
+            margin-top:10px;
+        }
+
+        #one {
+            font-size: 20px;
+            color: black;
+            margin-top: 10px;
+        }
+    </style>
+
+   
+</head>
+<body>
+    <h1 style="text-align:center; margin-left:40px;color:navajowhite ">LET'S PLAN AN ACADEMIC EVENT</h1>
+    <div>
+    @using (Html.BeginForm("LoginValidate", "Home", FormMethod.Post))
+    {
+
+        @Html.HiddenFor(m => m.Id)
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { required = true, Style = "margin-left:10%" })
+        <br />
+      
+      
+
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { required = true, type = "password", Style="margin-left:5%" })
+        <br />
+        <br />
+        
+        <button  class="btn" type="submit" value="SignIn" style="margin-left:22%">Sign In</button>
+    }
+      
+    </div>
+    <script>
+        function showDialog() {
+            alert("Successfully Updated");
+
+        }
+
+        function change()
+        {
+           if( document.getElementById('Email').contains(".com"))
+           
+            {
+
+               return;
+           }
+           else
+           {
+               alert("p")
+           }
+        }
+
+    </script>
+
+
+
+    @*<form  action="~/Home/LoginValidate" method="post">
+        <label>UserName</label>
+        <input type="text" name="name" required /><br /><br />
+
+        <label>Password</label>
+        <input type="password" name="Password" required /><br /><br />
+
+        <input type="submit" style="margin-left:20%; background-color:black; color:white; height:30px; width:80px;" value="SignIn" />
+
+
+    </form>*@
+
+            <label style="text-align:center; font-style:italic;margin-left:38%;margin-top:45px;">Not a member !!</label>&nbsp;&nbsp;
+                <a href="#openModal" style="text-align:center;font-size:20px">SignUp</a>
+  
+
+    <div id="openModal" class="modalDialog">
+        <div style="background-color:#393939;">
+            <a href="#close" title="Close" class="close">X</a>
+            <h2 style="text-align:center;">REGISTER ME!</h2>
+
+            @using (Html.BeginForm("SaveInDB", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                  
+                    
+                        @Html.TextBoxFor(m => m.Name)
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                    
+                        @Html.TextBoxFor(m => m.Email, new { type="email"})
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                   
+                        @Html.TextBoxFor(m => m.Password, new { required = true, type = "password", Style = "margin-left:5%" })
+                        @Html.ValidationMessageFor(m => m.Password)</div>
+
+                        <div class="form-group">
+
+                            <button class="btn" type="submit" value="Register"  style="margin-left:22%">Register</button>
+
+                        </div>
+                </fieldset>
+            }
+            @*<form action="~/Home/SaveInDB" onsubmit="check()"  onclick="check()" method="post">
+
+
+                <label id="one">Name</label>
+                <input type="text" required name="Name" style="margin-left:20%" /><br />
+
+
+
+
+                <label id="one">Email &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" id="Email" required name="Email" onchange="check" onclick="check" style="margin-left:15%" /><br />
+
+                <label id="one">Password&nbsp;&nbsp;</label>
+                <input type="password" required name="Password" style="margin-left:10%" /><br />
+
+
+                <input id="one" type="submit" value="Register Me" style="margin-left:10%" onsubmit="check" />
+
+
+
+
+            </form>*@
+        </div>
+        @section Scripts{
+            @Scripts.Render("~/bundles/jqueryval")
+            }
+        }
+    </div>        
+    
+
+  
+</body>
+
+
+
+
+</html>

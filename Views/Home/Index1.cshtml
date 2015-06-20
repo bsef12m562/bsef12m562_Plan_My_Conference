@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layoutcustom1.cshtml";
+}
+
+
+<html>
+<head>
+    <title>Home</title>
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+
+    <script type=”text/javascript”>
+        $(document).ready(function() {
+        $(“.fancybox”).fancybox();
+        });
+    </script>
+    <style>
+        .slider {
+            margin: 10px 0;
+            width: 100%; /* Update to your slider width */
+            height: 100%; /* Update to your slider height */
+            position: relative;
+            overflow: hidden;
+        }
+
+            .slider li {
+                display: none;
+                position: absolute;
+                width: 100%; /* Update to your slider width */
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+        img {
+            margin-top: 20px;
+        }
+    </style>
+    <script src=”http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js”&gt>        ; </script>
+
+    <script src="~/Scripts/slider.js"></script>
+
+</head>
+<body>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/Images/onepic.jpg">
+            </div>
+
+            <div class="item">
+                <img src="~/Images/twopic.png">
+            </div>
+
+            <div class="item">
+                <img src="~/Images/twopic.png" style="background-color:#383838;">
+            </div>
+
+            <div class="item">
+                <img src="~/Images/fourthone.jpg">
+            </div>
+        </div>
+    </div>
+
+    @*<div class="container">
+            <ul class="slider">
+                <li>
+                    <img src="~/Images/onepic.jpg" />
+                </li>
+                <li>
+                    <img src="~/Images/2.jpg" />
+                </li>
+                <li>
+                    <img src="~/Images/twopic.png" />
+                </li>
+                <li>
+                    <img src="~/Images/b4.jpg" />
+                </li>
+            </ul>
+        </div>
+
+        <div id=“gallery”>
+            <p>Gallery</p>
+            <a class=”fancybox” href=”~/Images/onepic.jpg” data-fancybox-group=”gallery”><img src=”~/Images/twitter.jpg” alt=”” /></a>
+            <a class=”fancybox” href=”~/Images/onepic.jpg” data-fancybox-group=”gallery”><img src=”~/Images/twitter.jpg” alt=”” /></a>
+            <a class=”fancybox” href=”~/Images/onepic.jpg” data-fancybox-group=”gallery”><img src=”~/Images/twitter.jpg” alt=”” /></a>
+            <a class=”fancybox” href=”~/Images/onepic.jpg” data-fancybox-group=”gallery”><img src=”~/Images/twitter.jpg” alt=”” /></a>
+        </div>
+        </div>*@
+</body>
+</html>

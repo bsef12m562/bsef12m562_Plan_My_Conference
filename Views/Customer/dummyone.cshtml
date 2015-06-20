@@ -1,0 +1,293 @@
+﻿
+
+@{
+    ViewBag.Title = "abvc";
+    Layout = "~/Views/Shared/layouttabbed.cshtml";
+}
+@using Conference.Models
+@model List<Booking>
+
+
+@{ Customer c = (Customer)HttpContext.Current.Session["user"];}
+<html>
+<head>
+    <title>Tabbed Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        /*----- Tabs -----*/
+        .tabs {
+            width: 100%;
+            display: inline-block;
+        }
+
+        /*----- Tab Links -----*/
+        /* Clearfix */
+        .tab-links:after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+
+        .tab-links li {
+            margin: 0px 5px;
+            float: left;
+            list-style: none;
+        }
+
+        .tab-links a {
+            padding: 9px 15px;
+            display: inline-block;
+            border-radius: 3px 3px 0px 0px;
+            background: #7FB5DA;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4c4c4c;
+            transition: all linear 0.15s;
+        }
+
+        .well {
+            background-image: url(../Images/b1.jpg);
+        }
+
+        .tab-links a:hover {
+            background: #a7cce5;
+            text-decoration: none;
+        }
+
+        li.active a, li.active a:hover {
+            background: #fff;
+            color: #4c4c4c;
+        }
+
+        /*----- Content of Tabs -----*/
+        .tab-content {
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: -1px 1px 1px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+
+        .tab {
+            display: none;
+        }
+
+            .tab.active {
+                display: block;
+            }
+
+        .first {
+            float: left;
+            width: 60%;
+            height: 50%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .second {
+            float: right;
+            width: 40%;
+            height: 50%;
+            background-color: transparent;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        img {
+            margin-top: 10%;
+            max-height: 100%;
+            max-width: 100%;
+            width: 250px;
+            height: 250px;
+        }
+
+
+        h3 {
+            font-family: Comic Sans MS, cursive, sans-serif;
+            color: yellow;
+        }
+        .inputclass
+        {
+            margin-left:40%;
+
+        }
+    </style>
+    <script>
+        function showDialog(x) {
+            var r = confirm("Are you sure you want to delete?");
+            if (r == true)
+                window.location.assign("/Customer/Del?id=" + x);
+            else
+                ;
+        }
+
+    </script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.tabs .tab-links a').on('click', function (e) {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                e.preventDefault();
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div class="tabs">
+
+        <ul class="tab-links">
+            <li class="active"><a href="#tab1">PROFILE </a></li>
+            <li><a href="#tab2">MY BOOKINGS</a></li>
+
+        </ul>
+
+
+        <div class="tab-content">
+
+
+            <div id="tab1" class="tab active">
+
+                
+                @*<div class="container second">
+                    <img src="../Images/@c.ProfilePicture" />
+                </div>*@
+
+                @*<div class="container first">*@
+                    @using (Html.BeginForm("EditCustomerProfile", "Customer", FormMethod.Post))
+                    {
+                         
+                        @Html.HiddenFor(m => c.Id);
+                        @Html.LabelFor(m => c.Name);
+                        <br />
+                        
+                        @Html.EditorFor(m =>c.Name);
+
+                        <br /><br />
+                        @Html.LabelFor(m => c.Email);
+                        <br />
+                        @Html.EditorFor(m => c.Email);
+
+                        <br /><br />
+                        @Html.LabelFor(m => c.Password);
+                        <br />
+                        @Html.EditorFor(m => c.Password);
+                    
+                        <br /><br />
+                        @Html.ActionLink("Edit", "EditCustomerProfile",new {}, new { @class = "btn btn-success" })
+                        
+                    }
+                @*</div>*@
+                </div>
+
+            <div id="tab2" class="tab">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>HOTELNAME</th>
+                            <th>PACKAGEID</th>
+                            <th>CHECKIN-DATE</th>
+                            <th>CHECKOUT-DATE</th>
+                            <th>CAPACITY</th>
+                            <th>PRICE</th>
+                            <th>LOCATION</th>
+                            <th>TYPE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{RecordsEntities re = new RecordsEntities();
+                        foreach (var x in Model)
+                        {
+                            var hotel = re.Hotels.FirstOrDefault(y => y.Id == x.RoomId);
+                            var deal = re.Deals.FirstOrDefault(y => y.Id == x.PackageId);
+                            if (deal != null)
+                            {
+                            <tr>
+                                <td>@x.Id</td>
+                                <td>@hotel.HotelName</td>
+                                <td>@x.PackageId</td>
+                                <td>@x.CheckIn</td>
+                                <td>@x.CheckOut</td>
+                                <td>@deal.Capacity</td>
+                                <td>@deal.Price</td>
+                                <td>@deal.Location</td>
+                                <td>@deal.Type</td>
+                                <td>@Html.ActionLink("Delete", "DeleteBooking", new { id = x.Id }, new { @class = "btn btn-primary" })</td>
+                            </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>@x.Id</td>
+                                    <td>@hotel.HotelName</td>
+                                    <td>@x.PackageId</td>
+                                    <td>@x.CheckIn</td>
+                                    <td>@x.CheckOut</td>
+                                    <td>@hotel.Capacity</td>
+                                    <td>@hotel.Budget</td>
+                                    <td>@hotel.Location</td>
+                                    <td>@hotel.Type</td>
+                                    <td>@Html.ActionLink("Delete", "DeleteBooking", new { id = x.Id}, new { @class = "btn btn-primary" })</td>
+                                </tr>
+                            }
+
+
+                        }
+
+                        }
+
+
+
+                    </tbody>
+                </table>
+                <script>
+
+
+                    function showDialogPreview(x) {
+
+                        window.location.assign("/Customer/Preview?id=" + x);
+
+                    }
+
+                </script>
+
+
+            </div>
+
+
+        </div>
+        </div>
+        @*</div>*@
+</body>
+</html>

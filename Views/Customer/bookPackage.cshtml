@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/layout2cust.cshtml";
+}
+@using Conference.Models
+@model Conference.Models.Deal
+@{ Customer c = (Customer)HttpContext.Current.Session["user"];}
+
+
+
+
+<html>
+<head>
+    <title>Booking</title>
+
+    <style>
+        .h1 {
+            text-align: center;
+        }
+
+        .well {
+            height: 90%;
+            width: 60%;
+        }
+
+        label {
+            color: yellow;
+        }
+
+        /*.form-horizontal
+        {
+            height:150px;
+        }*/
+
+        h2 {
+            color: yellow;
+            font-family: 'Comic Sans MS';
+        }
+    </style>
+</head>
+<body>
+
+    <h2>BOOKING</h2>
+
+
+    <hr />
+    <div class="container well-lg">
+        <form action="SearchForBooking" role="form">
+
+
+            <label>
+                Customer Id
+
+            </label>
+            <input style="margin-left:4%;" min="1" type="number" name="CustomerId" value="@c.Id" readonly />
+            <br /><br />
+
+
+            <label>Room ID</label>
+            <input type="number" name="RoomId" value="@ViewBag.Id" style="margin-left:6%;" min="" readonly /><br /><br />
+
+
+            <label>Package ID</label>
+            <input type="number" name="RoomId" value="@ViewBag.packageId"  style="margin-left:4.5%;" min="" readonly /><br /><br />
+
+            <label>CheckIn Date</label>
+            <input type="text" name="CheckIn" value="@ViewBag.start" style="margin-left:3%;" readonly /><br /><br />
+
+            <label>CheckOut Date</label>
+            <input type="text" name="CheckOut" style="margin-left:2.5%;" readonly value="@ViewBag.end" /><br /><br />
+
+
+            @Html.ActionLink("BookIt", "SavePackageBooking", new { cid = @c.Id, pid =@ViewBag.packageId,  rid = @ViewBag.Id, start = @ViewBag.start, end = @ViewBag.end }, new { @class = "btn btn-success", onclick = "alert('Are you sure you want to book')", Style = "width:40%;" })
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>
