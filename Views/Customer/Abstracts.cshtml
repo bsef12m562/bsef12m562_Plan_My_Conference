@@ -153,6 +153,11 @@
 </head>
 <body>
 
+   @if(ViewBag.abstarctDone!= null)
+    {
+        <script>alert("abstract has been saved!") </script>
+    }
+
     <div class="tabs">
 
         <ul class="tab-links">
@@ -195,10 +200,13 @@
                  
                     <br />
                     <br />
-                    <label>WRITE ABSTRACT OR UPLOAD FILE</label><input type="file" name="filename" />
-                    <br />
-                    <textarea class="longInput" cols="140" rows="20" placeholder="If you have selected a file then do not write the abstract.Just uploadthe file and press SAVE button below." name="AbstractDesc"></textarea>
-                    <br />
+                    <label> UPLOAD ABSTRACT </label><input type="file" name="filename" />
+                
+                    @*<br />
+                    <textarea class="longInput" cols="140" rows="20" placeholder="If you have selected a file then do not write the abstract.Just uploadthe file and press SAVE button below." name="AbstractDesc" id="AbstractDesc"></textarea>
+                    <br />*@
+
+                   
                     <button type="submit" style="height:30px;width:50px;" id="savebtn">SAVE</button>
                 </form>
 
